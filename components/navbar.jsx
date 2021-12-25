@@ -25,7 +25,7 @@ export default () => {
                   <a
                     href={route.to}
                     alt={route.description}
-                    className="hover:bg-blue-gray-300 dark:(hover:bg-blue-gray-800) focus:outline-none py-2 px-3 rounded-md"
+                    className="hover:bg-blue-gray-200 dark:(hover:bg-blue-gray-800) focus:outline-none py-2 px-3 rounded-md"
                   >
                     {route.name}
                   </a>
@@ -45,7 +45,11 @@ export default () => {
             >
               <GoThreeBars className="w-5 h-5" />
             </button>
-            <div className={`mt-1 z-99 lg:hidden ${mobileNav ? "<lg:block" : "hidden"} border border-2 border-gray-800 rounded-md absolute left-0 top-full text-[#696969] bg-blue-gray-200 dark:(bg-blue-gray-800 text-blue-gray-300)`}>
+            <div
+              className={`mt-1 z-99 lg:hidden ${
+                mobileNav ? "<lg:block" : "hidden"
+              } rounded-md absolute left-0 top-full text-[#696969] bg-blue-gray-200 dark:(bg-blue-gray-800 text-blue-gray-300)`}
+            >
               <ul className="py-1">
                 {Config.routes
                   .filter((route) => !route?.invisible)
@@ -53,7 +57,7 @@ export default () => {
                     return (
                       <a
                         href={route.to}
-                        className="block px-4 py-2 hover:bg-gray-100"
+                        className="block px-4 py-2 hover:bg-blue-gray-400 dark:(hover:bg-blue-gray-900)"
                       >
                         {route.name}
                       </a>
