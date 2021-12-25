@@ -1,0 +1,43 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Personal portfolio/blog.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write --check './**/*.{js,ts,tsx,jsx,css}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SherlockYigit/website.git"
+  },
+  "keywords": [
+    "website",
+    "portfolio",
+    "blog",
+    "personal"
+  ],
+  "author": "SherlockYigit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SherlockYigit/website/issues"
+  },
+  "homepage": "https://github.com/SherlockYigit/website#readme",
+  "dependencies": {
+    "framer-motion": "^5.5.5",
+    "next": "^12.0.7",
+    "next-themes": "^0.0.15",
+    "react": "^17.0.2",
+    "react-colorful": "^5.5.0",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-spinners": "^0.11.0",
+    "windicss-webpack-plugin": "^1.6.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
+}

@@ -1,0 +1,9 @@
+.next/
+.git/
+.vercel/
+node_modules/
+/package-lock.json
+/.env
+/yarn.lock
+
+.vercel
