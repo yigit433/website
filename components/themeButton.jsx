@@ -9,7 +9,7 @@ export default () => {
 
       return (
         <button
-          className="flex justify-center text-[#696969] bg-blue-gray-200 dark:(bg-blue-gray-800 text-blue-gray-300) rounded-md focus:outline-none py-2 px-2"
+          className="flex items-center justify-center p-2 text-[#696969] bg-blue-gray-200 dark:(bg-blue-gray-800 text-blue-gray-300) rounded-md focus:outline-none py-2 px-2"
           onClick={(e) => {
             e.preventDefault();
 
