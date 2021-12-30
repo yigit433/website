@@ -6,9 +6,20 @@ import useLanyard from "../lib/lanyard";
 import AgeCalculator from "../lib/ageCalculator";
 import DcUserActivity from "../components/dcUserActivity";
 import SocialAccountButton from "../components/socialAccountButton";
+import RepoCard from "../components/Cards/repoCard";
 import Config from "../config";
 
-export default () => {
+export const getStaticProps = async (ctx) => {
+  let repos = await fetch(
+    "https://api.github.com/users/SherlockYigit/repos"
+  ).then((r) => r.json());
+  repos = repos.filter(
+    (repo) => !repo.fork && !["SherlockYigit"].includes(repo.name)
+  );
+
+  return { props: { repos } };
+};
+export default ({ repos }) => {
   const [imgStat, setStat] = useState(false);
   const discordUser = useLanyard();
 
@@ -73,53 +84,63 @@ export default () => {
           ) : (
             <DcUserActivity
               service="idle"
-              content="He's not doing anything or he's not online."
+              content="He's not doing anything or he's offline."
             />
           )}
-          <div className="flex justify-center lg:justify-start space-x-2">
+        </div>
+        <div className="flex justify-center space-x-2">
+          <div className="flex inline-flex flex-col space-y-2">
             {Config.personal.socialAccounts.map((account, index) => {
               return <SocialAccountButton {...{ ...account }} key={index} />;
             })}
           </div>
-        </div>
-        <div className="relative h-53 w-53 space-y-2">
-          <div>
-            <div
-              id="status"
-              className={`p-3 ${
-                statusColor(discordUser?.discord_status)?.ping
-              } animate-ping absolute bottom-0 right-0 rounded-md`}
-            />
-            <div
-              id="status"
-              className={`p-3 ${
-                statusColor(discordUser?.discord_status)?.main
-              } absolute bottom-0 right-0 rounded-md`}
-            />
-            <div
-              id="profileImg_div"
-              className={`relative h-52 w-52 rounded-lg bg-gray-600 ${
-                imgStat ? "" : "animate-pulse"
-              }`}
-            >
-              <Image
-                src="/avatar.webp"
-                id="profileImg"
-                alt="Profile IMG"
-                onLoadingComplete={({ naturalWidth, naturalHeight }) => {
-                  if (naturalWidth > 1 && naturalHeight > 1) {
-                    setStat(true);
-                  } else {
-                    setStat(false);
-                  }
-                }}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg h-52 w-52"
+          <div className="relative h-53 w-53 space-y-2">
+            <div>
+              <div
+                id="status"
+                className={`p-3 ${
+                  statusColor(discordUser?.discord_status)?.ping
+                } animate-ping absolute bottom-0 right-0 rounded-md`}
               />
+              <div
+                id="status"
+                className={`p-3 ${
+                  statusColor(discordUser?.discord_status)?.main
+                } absolute bottom-0 right-0 rounded-md`}
+              />
+              <div
+                id="profileImg_div"
+                className={`relative h-52 w-52 rounded-lg bg-gray-600 ${
+                  imgStat ? "" : "animate-pulse"
+                }`}
+              >
+                <Image
+                  src="/avatar.webp"
+                  id="profileImg"
+                  alt="Profile IMG"
+                  onLoadingComplete={({ naturalWidth, naturalHeight }) => {
+                    if (naturalWidth > 1 && naturalHeight > 1) {
+                      setStat(true);
+                    } else {
+                      setStat(false);
+                    }
+                  }}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg h-52 w-52"
+                />
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      <h1 id="repos" className="text-center text-xl font-semibold">
+        Github repositories
+      </h1>
+      <div className="grid gap-4 md:grid-cols-3">
+        {repos.map((repo, i) => (
+          <RepoCard key={i} {...repo} />
+        ))}
       </div>
     </Layout>
   );

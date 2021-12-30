@@ -49,7 +49,7 @@ export default {
       name: "Repositories",
       description:
         "You can see the repositories I have developed on github from this page.",
-      to: "/repositories",
+      to: "/#repos",
     },
     {
       name: "Blog",

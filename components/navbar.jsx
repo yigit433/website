@@ -13,9 +13,12 @@ export default () => {
         <div className="flex space-x-2">
           <h1 className="text-2xl font-semibold">
             {Config.siteName.first + " "}
-            <span className="rounded-md p-0.5 text-white bg-gradient-to-r from-emerald-400 to-teal-600">
+            <a
+              href="/"
+              className="rounded-md p-0.5 text-white bg-gradient-to-r from-emerald-400 to-teal-600"
+            >
               {Config.siteName.second}
-            </span>
+            </a>
           </h1>
           <ul className="<lg:hidden flex items-center space-x-1 text-base">
             {Config.routes
