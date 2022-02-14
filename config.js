@@ -30,6 +30,12 @@ export default {
         name: "Github",
         url: "https://github.com/SherlockYigit",
       },
+      {
+        color: "#000000",
+        textColor: "#FFFFFF",
+        name: "Steam",
+        url: "https://steamcommunity.com/id/yigitsh/",
+      },
     ],
   },
   routes: [

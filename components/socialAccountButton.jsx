@@ -1,9 +1,10 @@
-import { FaDiscord, FaGithub } from "react-icons/fa";
+import { FaDiscord, FaGithub, FaSteam } from "react-icons/fa";
 
 export default (account) => {
   const icon = {
     Discord: <FaDiscord className="w-5 h-5" />,
     Github: <FaGithub className="w-5 h-5" />,
+    Steam: <FaSteam className="w-5 h-5" />,
   };
 
   return (

@@ -151,7 +151,7 @@ export default () => {
             y: 20,
           }}
         >
-          <ClimbingBoxLoader color="#50E3C2" loading={true} size={30} />
+          <ClimbingBoxLoader color="#50E3C2" loading={true} size={20} />
         </motion.div>
       ) : (
         error && (
