@@ -1,25 +1,23 @@
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import swr from "swr";
 
+import SocialAccountButton from "../components/socialAccountButton";
+import DcUserActivity from "../components/dcUserActivity";
+import RepoCard from "../components/Cards/repoCard";
+import AgeCalculator from "../lib/ageCalculator";
 import Layout from "../layouts/mainLayout";
 import useLanyard from "../lib/lanyard";
-import AgeCalculator from "../lib/ageCalculator";
-import DcUserActivity from "../components/dcUserActivity";
-import SocialAccountButton from "../components/socialAccountButton";
-import RepoCard from "../components/Cards/repoCard";
 import Config from "../config";
 
-export const getStaticProps = async (ctx) => {
-  let repos = await fetch(
-    "https://api.github.com/users/SherlockYigit/repos"
-  ).then((r) => r.json());
-  repos = repos.filter(
-    (repo) => !repo.fork && !["SherlockYigit"].includes(repo.name)
+export default () => {
+  const { data, error } = swr(
+    "https://api.github.com/users/SherlockYigit/repos",
+    (url) => fetch(url).then((res) => res.json())
   );
 
-  return { props: { repos } };
-};
-export default ({ repos }) => {
   const [imgStat, setStat] = useState(false);
   const discordUser = useLanyard();
 
@@ -137,11 +135,74 @@ export default ({ repos }) => {
       <h1 id="repos" className="text-center text-xl font-semibold">
         Github repositories
       </h1>
-      <div className="grid gap-4 md:grid-cols-3">
-        {repos.map((repo, i) => (
-          <RepoCard key={i} {...repo} />
-        ))}
-      </div>
+      {!error && !data ? (
+        <motion.div
+          className="flex justify-center"
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            y: 20,
+          }}
+        >
+          <ClimbingBoxLoader color="#50E3C2" loading={true} size={30} />
+        </motion.div>
+      ) : (
+        error && (
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+            }}
+          >
+            There was a problem while fetching Github repositories!
+          </motion.p>
+        )
+      )}
+      {!error && data && (
+        <motion.div
+          className="grid gap-4 md:grid-cols-3"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={{
+            hidden: {
+              opacity: 1,
+              scale: 0,
+            },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+        >
+          {data
+            .filter(
+              (repo) => !repo.fork && !["SherlockYigit"].includes(repo.name)
+            )
+            .map((repo, i) => (
+              <RepoCard key={i} {...repo} />
+            ))}
+        </motion.div>
+      )}
     </Layout>
   );
 };
