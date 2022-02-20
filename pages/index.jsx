@@ -137,21 +137,28 @@ export default () => {
       </h1>
       {!error && !data ? (
         <motion.div
-          className="flex justify-center"
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: 20,
+          className="grid gap-4 md:grid-cols-3"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={{
+            hidden: {
+              opacity: 1,
+              scale: 0,
+            },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2,
+              },
+            },
           }}
         >
-          <ClimbingBoxLoader color="#50E3C2" loading={true} size={20} />
+          {[0, 1, 2, 3].map((i) => (
+            <RepoCard key={i} skeleton={true} />
+          ))}
         </motion.div>
       ) : (
         error && (
