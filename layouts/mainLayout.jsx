@@ -22,6 +22,8 @@ export default ({ conf = {}, children }) => {
     return findedRoute;
   })();
 
+  // container mx-auto space-y-2 px-8 lg:px-16
+
   return (
     <>
       <Head>
@@ -42,7 +44,7 @@ export default ({ conf = {}, children }) => {
         />
       </Head>
       <motion.div
-        className="container mx-auto space-y-2 px-8 lg:px-16"
+        className="space-y-8 px-8 lg:px-16 container mx-auto md:w-screen-lg"
         transition={{ duration: 0.5 }}
         initial={{
           opacity: 0,

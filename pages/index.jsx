@@ -1,4 +1,3 @@
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
@@ -6,18 +5,13 @@ import swr from "swr";
 
 import SocialAccountButton from "../components/socialAccountButton";
 import DcUserActivity from "../components/dcUserActivity";
-import RepoCard from "../components/Cards/repoCard";
+import GithubRepos from "../components/githubRepos";
 import AgeCalculator from "../lib/ageCalculator";
 import Layout from "../layouts/mainLayout";
 import useLanyard from "../lib/lanyard";
 import Config from "../config";
 
 export default () => {
-  const { data, error } = swr(
-    "https://api.github.com/users/SherlockYigit/repos",
-    (url) => fetch(url).then((res) => res.json())
-  );
-
   const [imgStat, setStat] = useState(false);
   const discordUser = useLanyard();
 
@@ -48,7 +42,7 @@ export default () => {
 
   return (
     <Layout>
-      <div className="flex mt-8 items-center lg:justify-around <lg:flex-col-reverse">
+      <div className="flex mt-16 items-center lg:justify-around <lg:flex-col-reverse">
         <div className="max-w-2xl space-y-1 lg:(mt-4 text-left) text-center items-center">
           <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl text-alignment">
             Self{" "}
@@ -135,81 +129,7 @@ export default () => {
       <h1 id="repos" className="text-center text-xl font-semibold">
         Github repositories
       </h1>
-      {!error && !data ? (
-        <motion.div
-          className="grid gap-4 md:grid-cols-3"
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={{
-            hidden: {
-              opacity: 1,
-              scale: 0,
-            },
-            visible: {
-              opacity: 1,
-              scale: 1,
-              transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-        >
-          {[0, 1, 2, 3].map((i) => (
-            <RepoCard key={i} skeleton={true} />
-          ))}
-        </motion.div>
-      ) : (
-        error && (
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: 20,
-            }}
-          >
-            There was a problem while fetching Github repositories!
-          </motion.p>
-        )
-      )}
-      {!error && data && (
-        <motion.div
-          className="grid gap-4 md:grid-cols-3"
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={{
-            hidden: {
-              opacity: 1,
-              scale: 0,
-            },
-            visible: {
-              opacity: 1,
-              scale: 1,
-              transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-        >
-          {data
-            .filter(
-              (repo) => !repo.fork && !["SherlockYigit"].includes(repo.name)
-            )
-            .map((repo, i) => (
-              <RepoCard key={i} {...repo} />
-            ))}
-        </motion.div>
-      )}
+      <GithubRepos />
     </Layout>
   );
 };
