@@ -17,9 +17,9 @@ export default () => {
           }}
         >
           {theme !== "dark" ? (
-            <IoMoonSharp className="w-5 h-5" />
+            <IoMoonSharp className="w-5 h-5 text-violet-900" />
           ) : (
-            <IoSunnySharp className="w-5 h-5" />
+            <IoSunnySharp className="w-5 h-5 text-yellow-300" />
           )}
         </button>
       );

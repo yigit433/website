@@ -10,7 +10,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="bg-blue-gray-100 dark:(bg-cool-gray-900 text-gray-50)">
+        <body className="transition-colors duration-150 ease-linear bg-blue-gray-100 dark:(bg-cool-gray-900 text-gray-50)">
+          <div className="bg-emerald-300 dark:bg-emerald-500 w-full py-1" />
           <Main />
           <NextScript />
         </body>

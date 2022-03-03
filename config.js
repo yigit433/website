@@ -37,6 +37,7 @@ export default {
         url: "https://steamcommunity.com/id/yigitsh/",
       },
     ],
+    usedLanguages: ["Javascript", "Typescript", "Python", "Rust", "Go", "C"],
   },
   routes: [
     {
