@@ -17,7 +17,7 @@ export default ({ service, content, url }) => {
 
   return (
     <div
-      className={`border-l-3 items-center text-center flex justify-between space-x-2 p-4 rounded-md bg-opacity-25 ${theme[service]}`}
+      className={`transition-all duration-150 ease-linear border-l-3 items-center text-center flex justify-between space-x-2 p-4 rounded-md bg-opacity-25 ${theme[service]}`}
     >
       {icons[service]}{" "}
       {url ? (
