@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import SocialAccountButton from "../components/socialAccountButton";
 import DcUserActivity from "../components/dcUserActivity";
-import GithubRepos from "../components/githubRepos";
 import AgeCalculator from "../lib/ageCalculator";
 import ImageCard from "../components/imageCard";
 import Layout from "../layouts/mainLayout";
@@ -103,10 +102,6 @@ export default () => {
           </div>
         </div>
       </div>
-      <h1 id="repos" className="text-center text-xl font-semibold">
-        Github repositories
-      </h1>
-      <GithubRepos />
     </Layout>
   );
 };

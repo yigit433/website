@@ -56,8 +56,8 @@ export default {
     {
       name: "Repositories",
       description:
-        "You can see the repositories I have developed on github from this page.",
-      to: "/#repos",
+        "On this page you can search and reach the projects I have developed open source in Github.",
+      to: "/repositories",
     },
     {
       name: "Blog",

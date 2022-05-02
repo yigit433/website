@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Swr from "swr";
 
@@ -21,11 +21,19 @@ export default function ImageCard(discordUser) {
     setImg("/avatar.webp");
   }
 
+  useEffect(() => {
+    console.log(
+      `Resim yüklendi! (${imgStat || Config.heroProfilePic === "github"})`
+    );
+  }, [imgStat]);
+
   return (
     <div
       id="profileImg_div"
       className={`relative h-52 w-52 rounded-lg bg-gray-600 ${
-        imgStat && imgUrl ? "" : "animate-pulse"
+        (imgStat || Config.heroProfilePic === "github") && Boolean(imgUrl)
+          ? ""
+          : "animate-pulse"
       }`}
     >
       {imgUrl && (
