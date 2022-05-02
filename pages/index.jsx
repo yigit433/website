@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image";
-import swr from "swr";
 
 import SocialAccountButton from "../components/socialAccountButton";
 import DcUserActivity from "../components/dcUserActivity";
 import GithubRepos from "../components/githubRepos";
 import AgeCalculator from "../lib/ageCalculator";
+import ImageCard from "../components/imageCard";
 import Layout from "../layouts/mainLayout";
 import useLanyard from "../lib/lanyard";
 import Config from "../config";
 
 export default () => {
-  const [imgStat, setStat] = useState(false);
   const discordUser = useLanyard();
 
   const statusColor = (user_status) => {
@@ -100,28 +98,7 @@ export default () => {
                   statusColor(discordUser?.discord_status)?.main
                 } absolute bottom-0 right-0 rounded-md`}
               />
-              <div
-                id="profileImg_div"
-                className={`relative h-52 w-52 rounded-lg bg-gray-600 ${
-                  imgStat ? "" : "animate-pulse"
-                }`}
-              >
-                <Image
-                  src="/avatar.webp"
-                  id="profileImg"
-                  alt="Profile IMG"
-                  onLoadingComplete={({ naturalWidth, naturalHeight }) => {
-                    if (naturalWidth > 1 && naturalHeight > 1) {
-                      setStat(true);
-                    } else {
-                      setStat(false);
-                    }
-                  }}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg h-52 w-52"
-                />
-              </div>
+              <ImageCard {...{ discordUser }} />
             </div>
           </div>
         </div>

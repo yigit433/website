@@ -1,4 +1,5 @@
 export default {
+  heroProfilePic: "github", // static, discord
   hostName: "website-yigitsh.vercel.app",
   siteName: {
     first: "yigit",

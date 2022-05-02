@@ -8,7 +8,7 @@ module.exports = {
     BIRTHTIME: process.env.BIRTHTIME,
   },
   images: {
-    domains: ["i.ytimg.com"],
+    domains: ["avatars.githubusercontent.com"],
   },
   webpack: (config) => {
     config.plugins.push(new WindiCSS());
