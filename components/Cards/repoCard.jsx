@@ -31,6 +31,11 @@ export default ({
         >
           <div className="rounded w-12 px-8 py-2 bg-warm-gray-400 animate-pulse" />
           <div className="rounded w-32 text-base mb-12 px-16 py-2 bg-warm-gray-400 animate-pulse" />
+          <div className="space-x-2 w-full flex items-center justify-around">
+            <div className="rounded w-12 px-8 py-2 bg-warm-gray-400 animate-pulse" />
+            <div className="rounded w-12 px-8 py-2 bg-warm-gray-400 animate-pulse" />
+            <div className="rounded w-12 px-8 py-2 bg-warm-gray-400 animate-pulse" />
+          </div>
         </motion.div>
       </div>
     );
