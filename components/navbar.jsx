@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { GoThreeBars } from "react-icons/go";
 
 import ThemeButton from "./themeButton";
@@ -6,6 +7,7 @@ import Config from "../config";
 
 export default () => {
   const [mobileNav, toggleMobileNav] = useState(false);
+  const Router = useRouter();
 
   return (
     <>
@@ -13,25 +15,41 @@ export default () => {
         <div className="flex space-x-2">
           <h1 className="text-2xl font-semibold">
             {Config.siteName.first + " "}
-            <a
-              href="/"
+            <button
               className="rounded-md p-0.5 text-white bg-gradient-to-r from-emerald-400 to-teal-600"
+              onClick={(e) => {
+                e.preventDefault();
+
+                Router.push("/");
+              }}
             >
               {Config.siteName.second}
-            </a>
+            </button>
           </h1>
           <ul className="<lg:hidden flex items-center space-x-1 text-base">
             {Config.routes
               .filter((route) => !route?.invisible)
               .map((route, index) => {
-                return (
+                return route.to.match("(http|https)://^") ? (
                   <a
                     href={route.to}
                     alt={route.description}
-                    className="hover:bg-blue-gray-200 dark:(hover:bg-blue-gray-800) focus:outline-none py-2 px-3 rounded-md"
+                    className="text-white/75 hover:text-white focus:outline-none py-2 px-3 rounded-md"
                   >
                     {route.name}
                   </a>
+                ) : (
+                  <button
+                    className="text-white/75 hover:text-white focus:outline-none py-2 px-3 rounded-md"
+                    alt={route.description}
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      Router.push(route.to);
+                    }}
+                  >
+                    {route.name}
+                  </button>
                 );
               })}
           </ul>
@@ -57,13 +75,25 @@ export default () => {
                 {Config.routes
                   .filter((route) => !route?.invisible)
                   .map((route, index) => {
-                    return (
+                    return route.to.match("(http|https)://^") ? (
                       <a
                         href={route.to}
                         className="block px-4 py-2 hover:bg-blue-gray-400 dark:(hover:bg-blue-gray-900)"
                       >
                         {route.name}
                       </a>
+                    ) : (
+                      <button
+                        className="block px-4 py-2 hover:bg-blue-gray-400 dark:(hover:bg-blue-gray-900)"
+                        alt={route.description}
+                        onClick={(e) => {
+                          e.preventDefault();
+
+                          Router.push(route.to);
+                        }}
+                      >
+                        {route.name}
+                      </button>
                     );
                   })}
               </ul>
