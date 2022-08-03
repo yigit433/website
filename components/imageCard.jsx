@@ -10,7 +10,7 @@ export default function ImageCard(discordUser) {
 
   if (Config.heroProfilePic === "github") {
     const { data, error } = Swr(
-      "https://api.github.com/users/SherlockYigit",
+      "https://api.github.com/users/yigit433",
       (url) => fetch(url).then((res) => res.json())
     );
 
