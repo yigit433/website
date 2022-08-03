@@ -29,7 +29,7 @@ export default {
         color: "#24292e",
         textColor: "#ffffff",
         name: "Github",
-        url: "https://github.com/SherlockYigit",
+        url: "https://github.com/yigit433",
       },
       {
         color: "#000000",
