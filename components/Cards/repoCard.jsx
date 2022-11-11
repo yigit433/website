@@ -17,7 +17,7 @@ export default ({
     return (
       <div className="flex flex-wrap">
         <motion.div
-          className="bg-blue-gray-200 dark:bg-blue-gray-800 w-full cursor-pointer shaodow-xl p-4 rounded-lg space-y-2"
+          className="bg-blue-gray-800 w-full cursor-pointer shaodow-xl p-4 rounded-lg space-y-2"
           variants={{
             hidden: {
               y: 20,
@@ -44,7 +44,7 @@ export default ({
   return (
     <a href={html_url} className="flex flex-wrap">
       <motion.div
-        className="bg-blue-gray-200 dark:bg-blue-gray-800 w-full cursor-pointer shaodow-xl p-4 rounded-lg space-y-2"
+        className="bg-blue-gray-800 w-full cursor-pointer shaodow-xl p-4 rounded-lg space-y-2"
         variants={{
           hidden: {
             y: 20,
@@ -67,12 +67,14 @@ export default ({
             <p>{stargazers_count}</p>
           </span>
           <span className="flex text-center items-center">
-            <span
-              className="mr-0.5 h-4 w-4 rounded-full"
-              style={{
-                "background-color": LangColors[language].color,
-              }}
-            />
+            {LangColors[language] && (
+              <span
+                className="mr-0.5 h-4 w-4 rounded-full"
+                style={{
+                  "background-color": LangColors[language].color,
+                }}
+              />
+            )}
             <p>{language}</p>
           </span>
           <span className="flex spaxe-x-0.5 text-center items-center">

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { GoThreeBars } from "react-icons/go";
 
-import ThemeButton from "./themeButton";
 import Config from "../config";
 
 export default () => {
@@ -57,7 +56,7 @@ export default () => {
         <div className="flex space-x-2">
           <div className="group relative">
             <button
-              className="lg:hidden flex items-center justify-center p-2 focus:outline-none rounded-md text-[#696969] bg-blue-gray-200 dark:(bg-blue-gray-800 text-blue-gray-300)"
+              className="lg:hidden flex items-center justify-center p-2 focus:outline-none rounded-md bg-blue-gray-800 text-blue-gray-300"
               onClick={(e) => {
                 e.preventDefault();
 
@@ -69,7 +68,7 @@ export default () => {
             <div
               className={`mt-1 z-99 lg:hidden ${
                 mobileNav ? "<lg:block" : "hidden"
-              } rounded-md absolute left-0 top-full text-[#696969] bg-blue-gray-200 dark:(bg-blue-gray-800 text-blue-gray-300)`}
+              } rounded-md absolute left-0 top-full bg-blue-gray-800 text-blue-gray-300`}
             >
               <ul className="py-1">
                 {Config.routes
@@ -78,13 +77,13 @@ export default () => {
                     return route.to.match("(http|https)://^") ? (
                       <a
                         href={route.to}
-                        className="block px-4 py-2 hover:bg-blue-gray-400 dark:(hover:bg-blue-gray-900)"
+                        className="block px-4 py-2 hover:bg-blue-gray-900"
                       >
                         {route.name}
                       </a>
                     ) : (
                       <button
-                        className="block px-4 py-2 hover:bg-blue-gray-400 dark:(hover:bg-blue-gray-900)"
+                        className="block px-4 py-2 hover:bg-blue-gray-900"
                         alt={route.description}
                         onClick={(e) => {
                           e.preventDefault();
@@ -99,7 +98,6 @@ export default () => {
               </ul>
             </div>
           </div>
-          <ThemeButton />
         </div>
       </nav>
     </>

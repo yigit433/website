@@ -2,12 +2,12 @@ export default function BackgroundEffect() {
   return (
     <>
       <ul className="box-area">
-        <li className="dark:bg-[#d6d3d1]" />
-        <li className="dark:bg-[#d6d3d1]" />
-        <li className="dark:bg-[#d6d3d1]" />
-        <li className="dark:bg-[#d6d3d1]" />
-        <li className="dark:bg-[#d6d3d1]" />
-        <li className="dark:bg-[#d6d3d1]" />
+        <li className="bg-[#d6d3d1]" />
+        <li className="bg-[#d6d3d1]" />
+        <li className="bg-[#d6d3d1]" />
+        <li className="bg-[#d6d3d1]" />
+        <li className="bg-[#d6d3d1]" />
+        <li className="bg-[#d6d3d1]" />
       </ul>
       <style jsx>{`
         .box-area {

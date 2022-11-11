@@ -1,4 +1,3 @@
-import { ThemeProvider } from "next-themes";
 import NProgress from "nprogress";
 import Router from "next/router";
 
@@ -20,14 +19,8 @@ export default ({ Component, pageProps }) => {
 
   return (
     <>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="light"
-        themes={["light", "dark"]}
-      >
-        <BackgroundEffect />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <BackgroundEffect />
+      <Component {...pageProps} />
     </>
   );
 };

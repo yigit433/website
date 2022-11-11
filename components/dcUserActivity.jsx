@@ -10,9 +10,9 @@ export default ({ service, content, url }) => {
     idle: <MdRestore className="w-8 h-8" />,
   };
   const theme = {
-    youtube: "bg-red-500 border-red-500 text-red-500 dark:text-red-400",
-    spotify: "bg-green-500 border-green-500 text-green-500 dark:text-green-400",
-    idle: "bg-warm-gray-500 border-warm-gray-500 text-warm-gray-500 dark:text-warm-gray-400",
+    youtube: "bg-red-500 border-red-500 text-red-400",
+    spotify: "bg-green-500 border-green-500 text-green-400",
+    idle: "bg-warm-gray-500 border-warm-gray-500 text-warm-gray-400",
   };
 
   return (

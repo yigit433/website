@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="transition-colors duration-150 ease-linear bg-blue-gray-100 dark:(bg-cool-gray-900 text-gray-50)">
+        <body className="transition-colors duration-150 ease-linear bg-cool-gray-900 text-gray-50">
           <div className="absolute top-0 h-[500px] bg-gradient-to-b opacity-[25%] w-full from-emerald-600 to-transparent" />
           <Main />
           <NextScript />

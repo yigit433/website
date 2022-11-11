@@ -33,7 +33,7 @@ export default function Repositories() {
           disabled={isDisabled}
           className={`${
             isDisabled ? "cursor-not-allowed" : ""
-          } px-3 py-2 w-full rounded-md bg-light-900 shadow-xl border-3 border-light-500 text-neutral-700 dark:(border-dark-100 bg-dark-700 text-neutral-100) focus:(outline-none border-light-600 dark:border-dark-200)`}
+          } px-3 py-2 w-full rounded-md bg-light-900 shadow-xl border-3 border-dark-100 bg-dark-700 text-neutral-100 focus:(outline-none border-dark-200)`}
           ref={searchInput}
         />
         <button
@@ -76,7 +76,7 @@ export default function Repositories() {
             {isLoaded &&
               data
                 .filter(
-                  (repo) => !repo.fork && !["SherlockYigit"].includes(repo.name)
+                  (repo) => !repo.fork && !["yigit433"].includes(repo.name)
                 )
                 .map((repo, i) => <RepoCard key={i} {...repo} />)}
             {isLoading &&
