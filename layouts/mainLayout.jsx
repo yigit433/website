@@ -31,7 +31,7 @@ export default ({ conf = {}, children }) => {
           {currentRoute.name} - {Config.hostName}
         </title>
 
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
 
         <meta property="og:title" content={currentRoute.name} />
         <meta property="og:description" content={currentRoute.description} />
